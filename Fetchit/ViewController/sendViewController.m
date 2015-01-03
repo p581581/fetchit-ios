@@ -124,8 +124,7 @@
     for (int i = 0; i < file_count; i++) {
         
         NSDictionary *dict = info[i];
-        progressButton *progress = [[progressButton alloc] initWithFrame:
-                                    CGRectMake(0, 40 + (90 * (i + fileCount)), 768, 90)];
+        progressButton *progress = [[progressButton alloc] initWithFrame:CGRectMake(0, 40 + (90 * (i + fileCount)), self.view.frame.size.width, 90)];
         progress.tag = i;
 //        progress.hidden = YES;
         [progress transferBegin];
@@ -261,8 +260,60 @@
         // set the UIProgressView on Main Thread
         [self performSelectorOnMainThread:@selector(setProgress:) withObject:dict waitUntilDone:NO];
         
+//        //讀取檔案
+//        NSFileHandle * fileHandle = [NSFileHandle fileHandleForReadingAtPath:filePath];
+//        
+//        //記錄傳送多少Byte
+//        unsigned long long  sum = 0;
+//        int length;
+//        NSData *buffer;
+//        
+//        //每次傳送4096Bytes
+//        while (sum < fileLength) {
+//            
+//            //讀取4096Bytes
+//            buffer = [fileHandle readDataOfLength:BUFFER_SIZE];
+//            length = (int)[buffer length]; //目前長度大小
+//            
+//            //輸出串流並確保有完整寫入
+//            for(
+//                NSInteger write_count = 0;
+//                write_count < length;
+//                write_count += [_client.outputStream write: [buffer bytes] + write_count maxLength:length - write_count]
+//            );
+//            
+//            //加總長度
+//            sum += length;
+//            
+////            NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 0.01 ];
+////            [NSThread sleepUntilDate:future];
+//            
+//            NSDictionary * dict = @{@"index":@(fileCompleteCount),@"progress":@((float)sum / (float) fileLength)};
+//            
+//            // Update the UIProgressView on Main Thread
+//            [self performSelectorOnMainThread:@selector(updateProgress:) withObject:dict waitUntilDone:NO];
+//        }
+//        
+//        [fileHandle closeFile];
+//        // Update the UIProgressView on Main Thread
+//        [self performSelectorOnMainThread:@selector(notifyProgressEnd:) withObject:@(fileCompleteCount) waitUntilDone:NO];
+//        NSLog(@"close file");
+    }
+    
+    
+    for (NSInteger fileCompleteCount = 0;  fileCompleteCount < fileCount; fileCompleteCount++) {
+        
+        NSString * name = [NSString stringWithFormat:@"DSC_5810%ld.jpg",fileCompleteCount + 1];
+        NSString * rootPath =[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+        NSString* filePath = [rootPath stringByAppendingPathComponent:name];
+        
         //讀取檔案
         NSFileHandle * fileHandle = [NSFileHandle fileHandleForReadingAtPath:filePath];
+        
+        NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];
+        
+        NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
+        long long fileLength = [fileSizeNumber longLongValue];
         
         //記錄傳送多少Byte
         unsigned long long  sum = 0;
@@ -281,13 +332,13 @@
                 NSInteger write_count = 0;
                 write_count < length;
                 write_count += [_client.outputStream write: [buffer bytes] + write_count maxLength:length - write_count]
-            );
+                );
             
             //加總長度
             sum += length;
             
-//            NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 0.01 ];
-//            [NSThread sleepUntilDate:future];
+            //            NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 0.01 ];
+            //            [NSThread sleepUntilDate:future];
             
             NSDictionary * dict = @{@"index":@(fileCompleteCount),@"progress":@((float)sum / (float) fileLength)};
             
@@ -299,6 +350,9 @@
         // Update the UIProgressView on Main Thread
         [self performSelectorOnMainThread:@selector(notifyProgressEnd:) withObject:@(fileCompleteCount) waitUntilDone:NO];
         NSLog(@"close file");
+        
+        Byte checksum[] = {0,0,0,0,0,0,0,0};
+        [_client.outputStream write: checksum maxLength:8];
     }
     
     [_client close];

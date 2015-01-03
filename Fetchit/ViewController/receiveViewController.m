@@ -36,6 +36,7 @@ receiveViewController const* Self;
     NSUInteger fileCount;
     NSUInteger fileCompletedCount;
     int64_t fileLength;
+    int64_t *filesLength;
     int64_t filenameLength;
     NSString *fileName;
     
@@ -72,6 +73,7 @@ receiveViewController const* Self;
     _progresses = [[NSMutableArray alloc] init];
     _files = [[NSMutableArray alloc] init];
     _filenames = [[NSMutableArray alloc]init];
+    _data = [[NSMutableData alloc] init];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -175,6 +177,8 @@ receiveViewController const* Self;
                 NSLog(@"file count :%lu", (unsigned long)fileCount);
                 [self performSelector:@selector(createProgress:) onThread:_receiveThread withObject:@(fileCount) waitUntilDone:NO ];
                 
+                filesLength = (int64_t *) malloc(sizeof(int64_t) * fileCount);
+                
                 READ_STREAM_STATE++;
             }
             break;
@@ -195,6 +199,7 @@ receiveViewController const* Self;
                 stageRecivedLength=  0;
                 fileLength = ((long long) buffer[0] << 56) + ((long long) buffer[1] << 48) + ((long long) buffer[2] << 40) + ((long long) buffer[3] << 32) + ((long long) buffer[4] << 24) + ((long long) buffer[5] << 16) + ((long long) buffer[6] << 8) + (long long) buffer[7];
                 NSLog(@"file length :%lld", fileLength);
+                filesLength[fileCompletedCount] = fileLength;
                 READ_STREAM_STATE++;
             }
             
@@ -221,7 +226,6 @@ receiveViewController const* Self;
                 READ_STREAM_STATE++;
             }
             
-            
             break;
             
         case READ_STREAM_FILE_NAME: // 讀取檔名
@@ -243,9 +247,15 @@ receiveViewController const* Self;
                 fileName = [[NSString alloc] initWithData:[[NSData alloc]initWithBytesNoCopy:(void*) buffer length:filenameLength freeWhenDone:NO] encoding:NSUTF8StringEncoding];
                 
                 NSLog(@"file name :%@", fileName);
-                READ_STREAM_STATE++;
-                _data = [[NSMutableData alloc] init];
                 
+                fileCompletedCount++;
+                
+                if (fileCompletedCount == fileCount) {
+                    fileCompletedCount = 0;
+                    READ_STREAM_STATE++;
+                } else {
+                    READ_STREAM_STATE = READ_STREAM_FILE_LENGTH;
+                }
                 
                 // 更新進度條資訊
                 NSDictionary * dict = @{@"index":@(fileCompletedCount),@"title":fileName, @"fileSize":[NSString stringWithFormat:@"%lld",fileLength]};
@@ -258,7 +268,7 @@ receiveViewController const* Self;
         case READ_STREAM_FILE_CONTENT: // 讀取檔案內容
             
             // 計算未傳檔案大小，並決定這次接收長度
-            remain = fileLength - fileRecivedLength;
+            remain = filesLength[fileCompletedCount] - fileRecivedLength;
             int length = (remain >= BUFFER_SIZE)?BUFFER_SIZE:(int)remain;
             
             // 讀取串流
@@ -279,14 +289,17 @@ receiveViewController const* Self;
             
             [self performSelector:@selector(updateProgress:) onThread:_receiveThread withObject: dict waitUntilDone:NO];
             
-            if (stageRecivedLength == BUFFER_SIZE || fileRecivedLength == fileLength) {
+            if (stageRecivedLength == BUFFER_SIZE || fileRecivedLength == filesLength[fileCompletedCount]) {
                 
                 stageRecivedLength =  0;
                 
                 [_data appendBytes:buffer length:length];
                 
                 
-                if (fileRecivedLength == fileLength) {
+                if (fileRecivedLength == filesLength[fileCompletedCount]) {
+                    
+                    Byte trash[8];
+                    [stream read:trash  maxLength:8];
                     
                     fileRecivedLength = 0;
                     
@@ -299,11 +312,10 @@ receiveViewController const* Self;
                     NSLog(@"%lu",(unsigned long)fileCompletedCount);
                     
                     if (fileCompletedCount == fileCount) {
+                        
                         READ_STREAM_STATE = READ_STREAM_FILE_COUNT;
                         [_server close];
                         _server = nil;
-                    } else if (fileCompletedCount < fileCount) {
-                        READ_STREAM_STATE = READ_STREAM_FILE_LENGTH;
                     }
                 }
             }
@@ -319,8 +331,7 @@ receiveViewController const* Self;
     int file_count = [count intValue];
     
     for (int i = 0; i < file_count; i++) {
-        progressButton *progress = [[progressButton alloc] initWithFrame:
-                                    CGRectMake(0, 40 + (90 * i), 700, 90)];
+        progressButton *progress = [[progressButton alloc] initWithFrame:CGRectMake(0, 40 + (90 * i), self.view.frame.size.width, 90)];
         progress.tag = i;
         progress.hidden = YES;
         [self.view addSubview:progress];
@@ -359,6 +370,7 @@ receiveViewController const* Self;
     progressButton * tmp = _progresses[index];
     [tmp transferDidEnd];
     [self saveImageToLibrary:_files[index] fileName:_filenames[index]];
+    _data = [[NSMutableData alloc] init];
 }
 
 - (void) reviseCenterText: (NSString*) text{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="filetransfer logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="JKC-Am-p3n">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ic_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="JKC-Am-p3n">
                                 <rect key="frame" x="24" y="-308" width="720" height="1024"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="JKC-Am-p3n" secondAttribute="height" multiplier="5:2" id="AAr-qH-UgB"/>
@@ -171,7 +171,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehQ-Rr-JUD">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehQ-Rr-JUD">
                                 <rect key="frame" x="648" y="904" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ehQ-Rr-JUD" secondAttribute="height" multiplier="1:1" id="6Jf-fR-KxZ"/>
@@ -202,7 +202,7 @@
                                     <action selector="addAction:" destination="c9F-6H-Yxf" eventType="touchUpInside" id="9Kd-3y-K9o"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUr-PD-0hv">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUr-PD-0hv">
                                 <rect key="frame" x="0.0" y="272" width="768" height="330"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LUr-PD-0hv" secondAttribute="height" multiplier="94:55" id="Lzy-fM-NwJ">
@@ -228,10 +228,10 @@
                                     <action selector="addFiles:" destination="c9F-6H-Yxf" eventType="touchUpInside" id="mhT-Af-neh"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dXt-Hu-OZH">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dXt-Hu-OZH">
                                 <rect key="frame" x="366" y="600" width="37" height="37"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qT1-LO-Ucl">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qT1-LO-Ucl">
                                 <rect key="frame" x="20" y="904" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qT1-LO-Ucl" secondAttribute="height" multiplier="1:1" id="dvC-nb-2MO"/>
@@ -263,7 +263,7 @@
                                     <action selector="backAction:" destination="c9F-6H-Yxf" eventType="touchUpInside" id="89a-ib-ifn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LP-l6-5BU">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LP-l6-5BU">
                                 <rect key="frame" x="334" y="904" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8LP-l6-5BU" secondAttribute="height" multiplier="1:1" id="fhL-6h-FKK"/>
@@ -333,6 +333,10 @@
                                 <exclude reference="hYC-XW-Blh"/>
                                 <exclude reference="trh-up-7pj"/>
                                 <exclude reference="uEH-0A-s3U"/>
+                                <exclude reference="CWF-h4-KWd"/>
+                                <exclude reference="PgJ-ww-oW8"/>
+                                <exclude reference="iS9-c0-1oi"/>
+                                <exclude reference="xsa-Lm-dwb"/>
                                 <exclude reference="VFV-BU-lXS"/>
                                 <exclude reference="al4-zg-Mah"/>
                                 <exclude reference="gDU-Wh-45u"/>
@@ -342,10 +346,6 @@
                                 <exclude reference="zni-yQ-SOO"/>
                                 <exclude reference="75o-kH-4ZE"/>
                                 <exclude reference="mMo-28-mdq"/>
-                                <exclude reference="CWF-h4-KWd"/>
-                                <exclude reference="PgJ-ww-oW8"/>
-                                <exclude reference="iS9-c0-1oi"/>
-                                <exclude reference="xsa-Lm-dwb"/>
                                 <exclude reference="Bps-zP-vO0"/>
                                 <exclude reference="Dba-Ju-waj"/>
                                 <exclude reference="HrL-CT-qEH"/>
@@ -362,13 +362,13 @@
                             <mask key="constraints">
                                 <include reference="NVO-7m-FZh"/>
                                 <include reference="trh-up-7pj"/>
+                                <include reference="CWF-h4-KWd"/>
+                                <include reference="PgJ-ww-oW8"/>
+                                <include reference="xsa-Lm-dwb"/>
                                 <include reference="VFV-BU-lXS"/>
                                 <include reference="r9v-BF-Xar"/>
                                 <include reference="zni-yQ-SOO"/>
                                 <include reference="75o-kH-4ZE"/>
-                                <include reference="CWF-h4-KWd"/>
-                                <include reference="PgJ-ww-oW8"/>
-                                <include reference="xsa-Lm-dwb"/>
                                 <include reference="Bps-zP-vO0"/>
                                 <include reference="HrL-CT-qEH"/>
                                 <include reference="dzb-9S-KUM"/>
@@ -380,12 +380,12 @@
                             <mask key="constraints">
                                 <include reference="hYC-XW-Blh"/>
                                 <include reference="uEH-0A-s3U"/>
+                                <include reference="iS9-c0-1oi"/>
                                 <include reference="al4-zg-Mah"/>
                                 <include reference="gDU-Wh-45u"/>
                                 <include reference="dtD-Yk-JAl"/>
                                 <include reference="pPp-fK-ZAk"/>
                                 <include reference="mMo-28-mdq"/>
-                                <include reference="iS9-c0-1oi"/>
                                 <include reference="Dba-Ju-waj"/>
                                 <exclude reference="UBl-xf-2x2"/>
                                 <include reference="cRh-Bb-Veb"/>
@@ -418,7 +418,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Press the receive button." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mO-kg-L1C">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Press the receive button." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mO-kg-L1C">
                                 <rect key="frame" x="0.0" y="272" width="768" height="330"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6mO-kg-L1C" secondAttribute="height" multiplier="94:55" id="Xep-Fr-kIl"/>
@@ -437,7 +437,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12q-vJ-0Lf">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12q-vJ-0Lf">
                                 <rect key="frame" x="20" y="904" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="12q-vJ-0Lf" secondAttribute="height" multiplier="1:1" id="s58-dQ-3WX"/>
@@ -463,7 +463,7 @@
                                     <action selector="backAction:" destination="8o5-6n-toi" eventType="touchUpInside" id="gI0-l7-dkF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAB-aW-wIi">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAB-aW-wIi">
                                 <rect key="frame" x="334" y="904" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wAB-aW-wIi" secondAttribute="height" multiplier="1:1" id="HuK-oU-oNZ"/>
@@ -488,7 +488,7 @@
                                     <action selector="receiveAction:" destination="8o5-6n-toi" eventType="touchUpInside" id="Lfq-YL-gzj"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Zgd-fM-jg2">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Zgd-fM-jg2">
                                 <rect key="frame" x="366" y="565" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
@@ -513,6 +513,9 @@
                                 <exclude reference="dnt-q9-Rlh"/>
                                 <exclude reference="erV-aL-mSq"/>
                                 <exclude reference="vjM-NY-YPK"/>
+                                <exclude reference="3O0-wB-ePt"/>
+                                <exclude reference="Rd0-h0-REx"/>
+                                <exclude reference="j48-62-VHp"/>
                                 <exclude reference="DcG-H0-IRW"/>
                                 <exclude reference="UeQ-Jw-oao"/>
                                 <exclude reference="eAY-7V-7gZ"/>
@@ -520,9 +523,6 @@
                                 <exclude reference="ZgQ-SB-Ln3"/>
                                 <exclude reference="ejB-Sk-BCx"/>
                                 <exclude reference="qSj-l1-8Zz"/>
-                                <exclude reference="3O0-wB-ePt"/>
-                                <exclude reference="Rd0-h0-REx"/>
-                                <exclude reference="j48-62-VHp"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -530,15 +530,15 @@
                                 <include reference="dnt-q9-Rlh"/>
                                 <include reference="erV-aL-mSq"/>
                                 <include reference="vjM-NY-YPK"/>
+                                <include reference="3O0-wB-ePt"/>
+                                <include reference="Rd0-h0-REx"/>
+                                <include reference="j48-62-VHp"/>
                                 <include reference="UeQ-Jw-oao"/>
                                 <include reference="eAY-7V-7gZ"/>
                                 <include reference="xzV-qT-LRV"/>
                                 <include reference="ZgQ-SB-Ln3"/>
                                 <include reference="ejB-Sk-BCx"/>
                                 <include reference="qSj-l1-8Zz"/>
-                                <include reference="3O0-wB-ePt"/>
-                                <include reference="Rd0-h0-REx"/>
-                                <include reference="j48-62-VHp"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -561,7 +561,7 @@
     <resources>
         <image name="back.png" width="64" height="64"/>
         <image name="connect.png" width="64" height="64"/>
-        <image name="filetransfer logo.png" width="1280" height="512"/>
+        <image name="ic_logo.png" width="853" height="341"/>
         <image name="new.png" width="64" height="64"/>
     </resources>
 </document>

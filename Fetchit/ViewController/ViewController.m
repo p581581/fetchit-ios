@@ -22,7 +22,8 @@
 + (void) setButtonStyle: (UIButton*) button {
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient = [CAGradientLayer layer];
-    gradient.frame = button.bounds;
+    gradient.frame = CGRectMake(0, 0, button.frame.size.width, button.frame.size.height);
+    button.clipsToBounds = YES;
     gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:BUTTON_GRADIENT green:BUTTON_GRADIENT blue:BUTTON_GRADIENT alpha:BUTTON_GRADIENT_ALPHA  ] CGColor], (id)[[UIColor blackColor] CGColor], nil]; // 由上到下的漸層顏色
     [button.layer insertSublayer:gradient atIndex:0];
     button.layer.borderColor = [[UIColor whiteColor] CGColor];
